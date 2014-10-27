@@ -1,2 +1,2 @@
-Rails app which serves as the major end point for the Meet up android app
+Rails app which serves as the major end point for the Musiq app
 <tt>Rails Rocks My Socks</tt>.
