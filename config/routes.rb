@@ -7,7 +7,14 @@ MeetUp20::Application.routes.draw do
   # DELETE 'friendships', to: :destroy
   # resources :events
   # resources :locations
-   resources :users
+  devise_for :users
+
+  devise_scope :user do
+    post 'sessions' => 'sessions#create', :as => 'login'
+    delete 'sessions' => 'sessions#destroy', :as => 'logout'
+    post 'registrations' => 'registrations#create', :as => 'register'
+  end
+
   resources :playlists
   resources :videos
   
