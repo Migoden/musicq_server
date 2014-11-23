@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :playlist_user
   has_many :playlists, :through => :playlist_user
+  validates_uniqueness_of :name
 
   def ensure_authentication_token
     if authentication_token.blank?
