@@ -11,7 +11,8 @@ class SessionsController < Devise::SessionsController
              :json => { :success => true,
                         :info => "Logged in",
                         :data => { :auth_token => current_user.authentication_token,
-                                   :name => current_user.name 
+                                   :name => current_user.name,
+                                   :email => current_user.email 
                                  } 
                         }
     # else
