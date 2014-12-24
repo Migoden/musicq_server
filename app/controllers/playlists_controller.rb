@@ -14,17 +14,33 @@ class PlaylistsController < ApplicationController
 
 	def index
       playlists = current_user.playlists
-      # playlists = playlists.map{|event|
-      #   eventJSON = event.as_json
-      #   participants = event.users;
-      #   eventJSON['participants'] = participants
-      #   eventJSON
-      # }
+      playlists = playlists.map{|playlist|
+        videoJSON = playlist.as_json
+        videoJSON['videos'] = playlist.videos
+        videoJSON
+      }
       render :status => 200,
          :json => { success: true,
            playlists: playlists
         }
     end
+
+	  def show
+	      playlist = Playlist.find(params[:id])
+          playlistJSON = playlist.as_json
+          playlistJSON['videos'] = playlist.videos
+
+	      if(playlist)
+	       render :status => 200,
+	         :json => { success: true,
+	                     playlist: playlistJSON}
+	      else
+	        render :status => 400,
+	         :json => { success: false,
+	          error: "Not Found"}
+	      end
+	  end
+
 
 	  def create
 	     playlist = Playlist.create(params.permit(:name, :description))
