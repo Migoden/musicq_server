@@ -1,5 +1,6 @@
 class Playlist < ActiveRecord::Base
   
+  has_many :videos
   has_many :playlist_user
   has_many :users, :through => :playlist_user
 
