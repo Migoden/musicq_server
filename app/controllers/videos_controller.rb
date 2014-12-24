@@ -41,7 +41,7 @@ class VideosController < ApplicationController
 
   def create
 
-     video = Video.create(params.permit(:name, :description, :playlist_id, :video_type, :source_id))
+     video = Video.create(params.permit(:name, :description, :playlist_id, :video_type, :source_id, :thumbnail_url, :thumbnail_width, :thumbnail_height))
     
      if (video.save)
 

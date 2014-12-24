@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141224052042) do
+ActiveRecord::Schema.define(version: 20141224061536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,9 +56,12 @@ ActiveRecord::Schema.define(version: 20141224052042) do
     t.string   "name"
     t.string   "description"
     t.string   "source_id"
-    t.string   "video_type",  null: false
+    t.string   "video_type",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "thumbnail_url"
+    t.integer  "thumbnail_width"
+    t.integer  "thumbnail_height"
   end
 
   add_index "videos", ["playlist_id"], name: "index_videos_on_playlist_id", using: :btree
